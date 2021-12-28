@@ -9,32 +9,46 @@ uses
 
 type
 
-  { TForm1 }
+  { TForm_LosSort }
 
-  TForm1 = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
-    procedure Button1Click(Sender: TObject);
+  TForm_LosSort = class(TForm)
+    Button_Koniec: TButton;
+    Button_Info: TButton;
+    Button_Sortuj: TButton;
+    Button_Losuj: TButton;
+    Edit_Info: TEdit;
+    Lista_Losowanie: TListBox;
+    Lista_Sortowanie: TListBox;
+    procedure Button_InfoClick(Sender: TObject);
+    procedure Button_KoniecClick(Sender: TObject);
   private
-
+    function InformacjaOProgramie : string;
   public
 
   end;
 
 var
-  Form1: TForm1;
+  Form_LosSort: TForm_LosSort;
 
 implementation
 
 {$R *.lfm}
 
-{ TForm1 }
+{ TForm_LosSort }
 
-procedure TForm1.Button1Click(Sender: TObject);
+function TForm_LosSort.InformacjaOProgramie : string;
+begin
+  InformacjaOProgramie:='Kacper Jajuga'
+end;
+
+procedure TForm_LosSort.Button_KoniecClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TForm_LosSort.Button_InfoClick(Sender: TObject);
+begin
+  Edit_Info.Text:=InformacjaOProgramie;
 end;
 
 end.

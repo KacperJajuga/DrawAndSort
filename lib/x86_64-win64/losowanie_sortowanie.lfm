@@ -22,6 +22,7 @@ object Form_LosSort: TForm_LosSort
     Top = 464
     Width = 99
     Caption = 'Info'
+    OnClick = Button_InfoClick
     TabOrder = 1
   end
   object Button_Sortuj: TButton
@@ -56,11 +57,43 @@ object Form_LosSort: TForm_LosSort
     ItemHeight = 0
     TabOrder = 5
   end
-  object Label_Info: TLabel
-    Left = 30
-    Height = 1
-    Top = 429
-    Width = 1
+  object Edit_Info: TEdit
+    Left = 32
+    Height = 23
+    Top = 432
+    Width = 480
+    TabOrder = 6
+  end
+  object Label_ListaLos: TLabel
+    Left = 24
+    Height = 17
+    Top = 8
+    Width = 132
+    Caption = 'Lista nieposortowana'
+    Font.CharSet = EASTEUROPE_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
     ParentColor = False
+    ParentFont = False
+  end
+  object Label_ListaSort: TLabel
+    Left = 307
+    Height = 17
+    Top = 8
+    Width = 113
+    Caption = 'Lista posortowana'
+    Font.CharSet = EASTEUROPE_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
   end
 end

@@ -16,9 +16,12 @@ type
     Button_Info: TButton;
     Button_Sortuj: TButton;
     Button_Losuj: TButton;
-    Label_Info: TLabel;
+    Edit_Info: TEdit;
+    Label_ListaSort: TLabel;
+    Label_ListaLos: TLabel;
     Lista_Losowanie: TListBox;
     Lista_Sortowanie: TListBox;
+    procedure Button_InfoClick(Sender: TObject);
     procedure Button_KoniecClick(Sender: TObject);
   private
     function InformacjaOProgramie : string;
@@ -43,6 +46,11 @@ end;
 procedure TForm_LosSort.Button_KoniecClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TForm_LosSort.Button_InfoClick(Sender: TObject);
+begin
+  Edit_Info.Text:=InformacjaOProgramie;
 end;
 
 end.
