@@ -64,4 +64,36 @@ object Form_LosSort: TForm_LosSort
     Width = 480
     TabOrder = 6
   end
+  object Label_ListaLos: TLabel
+    Left = 24
+    Height = 17
+    Top = 8
+    Width = 132
+    Caption = 'Lista nieposortowana'
+    Font.CharSet = EASTEUROPE_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label_ListaSort: TLabel
+    Left = 307
+    Height = 17
+    Top = 8
+    Width = 113
+    Caption = 'Lista posortowana'
+    Font.CharSet = EASTEUROPE_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
 end

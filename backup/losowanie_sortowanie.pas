@@ -17,6 +17,8 @@ type
     Button_Sortuj: TButton;
     Button_Losuj: TButton;
     Edit_Info: TEdit;
+    Label_ListaSort: TLabel;
+    Label_ListaLos: TLabel;
     Lista_Losowanie: TListBox;
     Lista_Sortowanie: TListBox;
     procedure Button_InfoClick(Sender: TObject);

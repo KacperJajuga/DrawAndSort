@@ -23,6 +23,7 @@ type
     Lista_Sortowanie: TListBox;
     procedure Button_InfoClick(Sender: TObject);
     procedure Button_KoniecClick(Sender: TObject);
+    procedure Button_LosujClick(Sender: TObject);
   private
     function InformacjaOProgramie : string;
   public
@@ -46,6 +47,16 @@ end;
 procedure TForm_LosSort.Button_KoniecClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TForm_LosSort.Button_LosujClick(Sender: TObject);
+var
+  i : integer;
+begin
+  for i:=1 to 20 do
+  begin
+    Lista_Losowanie.Items.Add(IntToStr(random(1000)));
+  end;
 end;
 
 procedure TForm_LosSort.Button_InfoClick(Sender: TObject);
