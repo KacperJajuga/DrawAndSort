@@ -32,6 +32,7 @@ type
 
 var
   Form_LosSort: TForm_LosSort;
+  losowanaTablica : array [1..20] of integer;
 
 implementation
 
@@ -53,9 +54,11 @@ procedure TForm_LosSort.Button_LosujClick(Sender: TObject);
 var
   i : integer;
 begin
+  Lista_Losowanie.Clear;
   for i:=1 to 20 do
   begin
-    Lista_Losowanie.Items.Add(IntToStr(random(1000)));
+    losowanaTablica[i]:=random(1000);
+    Lista_Losowanie.Items.Add(IntToStr(losowanaTablica[i]));
   end;
 end;
 

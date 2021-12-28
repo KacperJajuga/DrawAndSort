@@ -23,6 +23,7 @@ type
     Lista_Sortowanie: TListBox;
     procedure Button_InfoClick(Sender: TObject);
     procedure Button_KoniecClick(Sender: TObject);
+    procedure Button_LosujClick(Sender: TObject);
   private
     function InformacjaOProgramie : string;
   public
@@ -31,6 +32,7 @@ type
 
 var
   Form_LosSort: TForm_LosSort;
+  losowanaTablica : array [1..20] of integer;
 
 implementation
 
@@ -46,6 +48,17 @@ end;
 procedure TForm_LosSort.Button_KoniecClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TForm_LosSort.Button_LosujClick(Sender: TObject);
+var
+  i : integer;
+begin
+  for i:=1 to 20 do
+  begin
+    losowanaTablica[i]:=random(1000);
+    Lista_Losowanie.Items.Add(IntToStr(losowanaTablica[i]));
+  end;
 end;
 
 procedure TForm_LosSort.Button_InfoClick(Sender: TObject);

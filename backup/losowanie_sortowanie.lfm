@@ -39,6 +39,7 @@ object Form_LosSort: TForm_LosSort
     Top = 464
     Width = 96
     Caption = 'Losuj'
+    OnClick = Button_LosujClick
     TabOrder = 3
   end
   object Lista_Losowanie: TListBox
