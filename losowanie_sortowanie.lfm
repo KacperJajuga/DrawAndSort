@@ -1,0 +1,66 @@
+object Form_LosSort: TForm_LosSort
+  Left = 1087
+  Height = 600
+  Top = 157
+  Width = 543
+  Caption = 'Losowanie i sortowanie liczb'
+  ClientHeight = 600
+  ClientWidth = 543
+  LCLVersion = '2.0.12.0'
+  object Button_Koniec: TButton
+    Left = 360
+    Height = 41
+    Top = 528
+    Width = 99
+    Caption = 'Koniec'
+    OnClick = Button_KoniecClick
+    TabOrder = 0
+  end
+  object Button_Info: TButton
+    Left = 360
+    Height = 40
+    Top = 464
+    Width = 99
+    Caption = 'Info'
+    TabOrder = 1
+  end
+  object Button_Sortuj: TButton
+    Left = 80
+    Height = 41
+    Top = 528
+    Width = 96
+    Caption = 'Sortuj'
+    TabOrder = 2
+  end
+  object Button_Losuj: TButton
+    Left = 80
+    Height = 40
+    Top = 464
+    Width = 96
+    Caption = 'Losuj'
+    TabOrder = 3
+  end
+  object Lista_Losowanie: TListBox
+    Left = 24
+    Height = 394
+    Top = 24
+    Width = 216
+    ItemHeight = 0
+    TabOrder = 4
+  end
+  object Lista_Sortowanie: TListBox
+    Left = 304
+    Height = 394
+    Top = 24
+    Width = 217
+    ItemHeight = 0
+    TabOrder = 5
+  end
+  object Label_Info: TLabel
+    Left = 30
+    Height = 1
+    Top = 429
+    Width = 1
+    ParentColor = False
+  end
+end

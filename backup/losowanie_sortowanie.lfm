@@ -1,0 +1,43 @@
+object Form1: TForm1
+  Left = 1087
+  Height = 600
+  Top = 157
+  Width = 543
+  Caption = 'Losowanie i sortowanie liczb'
+  ClientHeight = 600
+  ClientWidth = 543
+  LCLVersion = '2.0.12.0'
+  object Button1: TButton
+    Left = 392
+    Height = 41
+    Top = 528
+    Width = 99
+    Caption = 'Koniec'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Button2: TButton
+    Left = 392
+    Height = 40
+    Top = 464
+    Width = 99
+    Caption = 'Info'
+    TabOrder = 1
+  end
+  object Button3: TButton
+    Left = 48
+    Height = 41
+    Top = 528
+    Width = 96
+    Caption = 'Sortuj'
+    TabOrder = 2
+  end
+  object Button4: TButton
+    Left = 48
+    Height = 40
+    Top = 464
+    Width = 96
+    Caption = 'Losuj'
+    TabOrder = 3
+  end
+end
