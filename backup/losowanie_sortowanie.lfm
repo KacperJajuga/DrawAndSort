@@ -31,6 +31,7 @@ object Form_LosSort: TForm_LosSort
     Top = 528
     Width = 96
     Caption = 'Sortuj'
+    OnClick = Button_SortujClick
     TabOrder = 2
   end
   object Button_Losuj: TButton

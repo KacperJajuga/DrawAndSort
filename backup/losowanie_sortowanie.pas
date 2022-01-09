@@ -1,5 +1,7 @@
 unit Losowanie_Sortowanie;
 
+
+
 {$mode objfpc}{$H+}
 
 interface
@@ -10,6 +12,23 @@ uses
 type
 
   { TForm_LosSort }
+
+  KolejnyElementListy = ^TypListy;
+
+  TypListy = record
+    dane : integer;
+    nastepnyElement : KolejnyElementListy;
+  end;
+
+  Lista = object
+    public
+      head : KolejnyElementListy;
+
+      constructor inicjalizacja;
+      destructor niszczenie;
+      procedure dodajNaKoniec(v : integer);
+      procedure usunKoniec;
+  end;
 
   TForm_LosSort = class(TForm)
     Button_Koniec: TButton;
@@ -24,6 +43,7 @@ type
     procedure Button_InfoClick(Sender: TObject);
     procedure Button_KoniecClick(Sender: TObject);
     procedure Button_LosujClick(Sender: TObject);
+    procedure Button_SortujClick(Sender: TObject);
   private
     function InformacjaOProgramie : string;
   public
@@ -32,13 +52,63 @@ type
 
 var
   Form_LosSort: TForm_LosSort;
-  losowanaTablica : array [1..20] of integer;
+  NowaLista : Lista;
+  i : integer;
 
 implementation
 
 {$R *.lfm}
 
 { TForm_LosSort }
+
+constructor Lista.inicjalizacja;
+begin
+  head := nil;
+end;
+
+destructor Lista.niszczenie;
+begin
+  while head <> nil do usunKoniec;
+end;
+
+procedure Lista.dodajNaKoniec(v : integer);
+var
+  p,e : KolejnyElementListy;
+begin
+  new ( e );
+  e^.nastepnyElement := nil;
+  e^.dane := v;
+  p := head;
+  if p = nil then
+    head := e
+  else
+    begin
+      while p^.nastepnyElement <> nil do p := p^.nastepnyElement;
+      p^.nastepnyElement := e;
+    end;
+  end;
+
+procedure Lista.usunKoniec;
+var
+  p : KolejnyElementListy;
+begin
+  p := head;
+  if p <> nil then
+    begin
+      if p^.nastepnyElement <> nil then
+        begin
+          while p^.nastepnyElement^.nastepnyElement <> nil do
+            p := p^.nastepnyElement;
+          dispose (p^.nastepnyElement);
+          p^.nastepnyElement := nil;
+        end
+      else
+      begin
+        dispose (p);
+        head := nil;
+      end;
+    end;
+end;
 
 function TForm_LosSort.InformacjaOProgramie : string;
 begin
@@ -52,13 +122,23 @@ end;
 
 procedure TForm_LosSort.Button_LosujClick(Sender: TObject);
 var
-  i : integer;
+  wylosowanaLiczba: integer;
+  p : KolejnyElementListy;
 begin
+  randomize;
+  NowaLista.niszczenie;
+  Lista_Losowanie.Clear;
+  NowaLista.inicjalizacja;
   for i:=1 to 20 do
   begin
-    losowanaTablica[i]:=random(1000);
-    Lista_Losowanie.Items.Add(IntToStr(losowanaTablica[i]));
+    NowaLista.dodajNaKoniec(random(1000));
+    Lista_Losowanie.Items.Add(IntToStr(i)+ ':   '+IntToStr(NowaLista^.dane));
   end;
+end;
+
+procedure TForm_LosSort.Button_SortujClick(Sender: TObject);
+begin
+  Lista_Sortowanie.Clear;
 end;
 
 procedure TForm_LosSort.Button_InfoClick(Sender: TObject);
