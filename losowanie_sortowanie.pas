@@ -122,7 +122,6 @@ end;
 
 procedure TForm_LosSort.Button_LosujClick(Sender: TObject);
 var
-  wylosowanaLiczba: integer;
   p : KolejnyElementListy;
 begin
   randomize;
@@ -133,11 +132,25 @@ begin
   begin
     NowaLista.dodajNaKoniec(random(1000));
   end;
+  p := NowaLista.head;
+  while p <> nil do
+    begin
+      Lista_Losowanie.Items.Add(IntToStr(p^.dane));
+      p := p^.nastepnyElement;
+    end;
 end;
 
 procedure TForm_LosSort.Button_SortujClick(Sender: TObject);
+var
+  p : KolejnyElementListy;
 begin
   Lista_Sortowanie.Clear;
+  p := NowaLista.head;
+  while p <> nil do
+    begin
+      Lista_Sortowanie.Items.Add(IntToStr(p^.dane));
+      p := p^.nastepnyElement;
+    end;
 end;
 
 procedure TForm_LosSort.Button_InfoClick(Sender: TObject);

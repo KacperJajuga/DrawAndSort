@@ -20,8 +20,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Losowanie_Sortowanie"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="115"/>
-        <CursorPos X="43" Y="134"/>
+        <TopLine Value="122"/>
+        <CursorPos X="23" Y="151"/>
         <UsageCount Value="165"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -123,7 +123,7 @@
         <UsageCount Value="6"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="13" HistoryIndex="12">
+    <JumpHistory Count="14" HistoryIndex="13">
       <Position1>
         <Filename Value="losowanie_sortowanie.pas"/>
         <Caret Line="3" Column="43"/>
@@ -176,6 +176,10 @@
         <Filename Value="losowanie_sortowanie.pas"/>
         <Caret Line="135" Column="69" TopLine="116"/>
       </Position13>
+      <Position14>
+        <Filename Value="losowanie_sortowanie.pas"/>
+        <Caret Line="134" Column="43" TopLine="115"/>
+      </Position14>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
