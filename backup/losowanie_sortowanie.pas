@@ -26,8 +26,11 @@ type
 
       constructor inicjalizacja;
       destructor niszczenie;
-      procedure dodajNaKoniec(v : integer);
-      procedure usunKoniec;
+      procedure dodajNaPoczatek(v : integer);
+      procedure usunPoczatek;
+      procedure podzielListe(var Lista1, Lista2 : Lista);
+      procedure scalanieList(var Lista1, Lista2 : Lista);
+      procedure sortowaniePrzezScalanie;
   end;
 
   TForm_LosSort = class(TForm)
@@ -68,45 +71,109 @@ end;
 
 destructor Lista.niszczenie;
 begin
-  while head <> nil do usunKoniec;
+  while head <> nil do usunPoczatek;
 end;
 
-procedure Lista.dodajNaKoniec(v : integer);
+procedure Lista.dodajNaPoczatek(v : integer);
 var
-  p,e : KolejnyElementListy;
+  p : KolejnyElementListy;
 begin
-  new ( e );
-  e^.nastepnyElement := nil;
-  e^.dane := v;
-  p := head;
-  if p = nil then
-    head := e
-  else
-    begin
-      while p^.nastepnyElement <> nil do p := p^.nastepnyElement;
-      p^.nastepnyElement := e;
-    end;
-  end;
+  new ( p );
+  p^.nastepnyElement := head;
+  p^.dane := v;
+  head := p;
+end;
 
-procedure Lista.usunKoniec;
+procedure Lista.usunPoczatek;
 var
   p : KolejnyElementListy;
 begin
   p := head;
   if p <> nil then
     begin
-      if p^.nastepnyElement <> nil then
+      head := p^.nastepnyElement;
+      dispose (p);
+    end;
+end;
+
+procedure Lista.podzielListe(var Lista1, Lista2 : Lista);
+var
+  p1, p2 : KolejnyElementListy;
+  s : boolean;
+begin
+  s := false;
+  Lista1.dodajNaPoczatek(0);
+  Lista2.dodajNaPoczatek(0);
+  p1 := Lista1.head;
+  p2 := Lista2.head;
+  while head <> nil do
+    begin
+      if s then
         begin
-          while p^.nastepnyElement^.nastepnyElement <> nil do
-            p := p^.nastepnyElement;
-          dispose (p^.nastepnyElement);
-          p^.nastepnyElement := nil;
+          p2^.nastepnyElement := head;
+          p2 := p2^.nastepnyElement;
         end
       else
       begin
-        dispose (p);
-        head := nil;
+        p1^.nastepnyElement := head;
+        p1 := p1^.nastepnyElement;
       end;
+      head := head^.nastepnyElement;
+      s := not s;
+    end;
+  p1^.nastepnyElement := nil;
+  p2^.nastepnyElement := nil;
+  Lista1.usunPoczatek;
+  Lista2.usunPoczatek;
+end;
+
+procedure Lista.scalanieList(var Lista1, Lista2 : Lista);
+var
+  p : KolejnyElementListy;
+begin
+  dodajNaPoczatek(0);
+  p := head;
+  while (Lista1.head <> nil) and (Lista2.head <> nil) do
+    begin
+      if Lista1.head^.dane > Lista2.head^.dane then
+        begin
+          p^.nastepnyElement := Lista2.head;
+          Lista2.head := Lista2.head^.nastepnyElement;
+        end
+      else
+        begin
+          p^.nastepnyElement := Lista1.head;
+          Lista1.head := Lista1.head^.nastepnyElement;
+        end;
+      p := p^.nastepnyElement;
+    end;
+  while Lista1.head <> nil do
+    begin
+      p^.nastepnyElement := Lista1.head;
+      Lista1.head := Lista1.head^.nastepnyElement;
+      p := p^.nastepnyElement;
+    end;
+  while Lista2.head <> nil do
+    begin
+      p^.nastepnyElement := Lista2.head;
+      Lista2.head := Lista2.head^.nastepnyElement;
+      p := p^.nastepnyElement;
+    end;
+  usunPoczatek;
+end;
+
+procedure Lista.sortowaniePrzezScalanie;
+var
+  h1, h2 : Lista;
+begin
+  if (head <> nil) and (head^.nastepnyElement <> nil) then
+    begin
+      h1.inicjalizacja;
+      h2.inicjalizacja;
+      podzielListe(h1, h2);
+      h1.sortowaniePrzezScalanie;
+      h2.sortowaniePrzezScalanie;
+      scalanieList(h1, h2);
     end;
 end;
 
@@ -130,7 +197,7 @@ begin
   NowaLista.inicjalizacja;
   for i:=1 to 20 do
   begin
-    NowaLista.dodajNaKoniec(random(1000));
+    NowaLista.dodajNaPoczatek(random(1000));
   end;
   p := NowaLista.head;
   while p <> nil do
@@ -141,8 +208,18 @@ begin
 end;
 
 procedure TForm_LosSort.Button_SortujClick(Sender: TObject);
+var
+  p : KolejnyElementListy;
 begin
   Lista_Sortowanie.Clear;
+  NowaLista.sortowaniePrzezScalanie;
+  p := NowaLista.head;
+  while p <> nil do
+    begin
+      Lista_Sortowanie.Items.Add(IntToStr(p^.dane));
+      p := p^.nastepnyElement;
+    end;
+  NowaLista.niszczenie;
 end;
 
 procedure TForm_LosSort.Button_InfoClick(Sender: TObject);
